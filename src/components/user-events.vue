@@ -4,33 +4,49 @@ import { useFilterStore } from './../stores/filter';
 import { ref, onMounted, reactive } from 'vue';
 
 
+
+const store = useFilterStore();
+
+store.$subscribe((mutation, state) => {
+    console.log('a change happened');
+    console.log(state);
+    if (state)
+        filterUsersByCountry(state._countryFilter);
+});
+
+
 const userList = reactive({
     items: []
 });
-const usersRequestUrl = 'https://github.com/Karjalaz/pinia-example/blob/master/src/assets/users';
+const usersRequestUrl = 'https://karjalaz.github.io/pinia-example/public/users.json';
 
-function fetchUsers() {
+const usersLoading = ref(true);
+
+function loadUsers() {
+    usersLoading.value = true;
     var request = new XMLHttpRequest();
-    request.open("GET", usersRequestUrl);
+    request.open('GET', usersRequestUrl);
 
-    request.responseType = "json";
+    request.responseType = 'json';
     request.send();
 
     request.onload = function () {
         var users = request.response;
-        console.log(users);
-        populateHeader(superHeroes);
         showUsers(users);
     };  
 }
 
 function showUsers(users) {
     userList.items = users;
+    usersLoading.value = false;
 }
 
+const filterUsersByCountry = (country) => userList.items.filter(user => user.country == country);
+
+
 onMounted(() => {
-    fetchUsers();
-})
+    loadUsers();
+});
 </script>
 
 <template>
@@ -38,7 +54,7 @@ onMounted(() => {
         <h3 class="events__title font-medium">
             List
         </h3>
-        <ul v-show="userList.items.length > 0"
+        <ul v-if="userList.items.length > 0"
             class="events__list">
             <li 
                 class="event__item"
@@ -47,5 +63,8 @@ onMounted(() => {
                 <user-item :user="user"></user-item>
             </li>
         </ul>
+        <div v-else class="events__loader animate-bounce">
+            ...
+        </div>
     </section>
 </template>

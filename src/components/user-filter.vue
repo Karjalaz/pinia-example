@@ -6,7 +6,7 @@ import { useFilterStore } from './../stores/filter';
 const countries = ['Russia', 'USA', 'Mexico'];
 const scores = ['below 10', 'inbetween 10 and 20', 'above 20'];
 
-const store = useFilterStore()
+const store = useFilterStore();
 </script>
 
 <template>
