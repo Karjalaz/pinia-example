@@ -27,8 +27,10 @@ watch(addressInfoFocused, () => {
 
 <template>
     <div class="user-item flex flex-row items-center justify-stretch text-start
-        shadow p-2 my-2">
-        <transition name="fade" mode="out-in">
+        relative shadow p-2 my-2">
+        <transition 
+            name="fade" 
+            mode="out-in">
             <div v-if="addressInfoVisibility" 
                 class="user-item__address-info absolute z-10 text-primary 
                 rounded p-2 mb-6 cursor-text bg-secondary bg-opacity-95"
@@ -62,7 +64,6 @@ watch(addressInfoFocused, () => {
                 class="user-item__text text-dark"
                 v-html="user.subtitle"></p>
         </div>
-
     </div>
 </template>
 

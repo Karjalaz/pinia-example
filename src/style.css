@@ -22,6 +22,7 @@
 #app {
   width: 100dvw;
   height: 100dvh;
+  max-height: 100dvh;
 }
 
 h1 {
@@ -38,6 +39,38 @@ h3 {
 
 p {
   font-size: clamp(0.75rem, 0.681rem + 0.37vw, 1.125rem);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .6s ;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1e1b4b;
 }
 
 @media screen and (max-width: 839px) {
