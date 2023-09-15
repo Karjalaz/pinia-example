@@ -10,7 +10,8 @@ const store = useFilterStore();
 </script>
 
 <template>
-    <section class="event-filter flex flex-col gap-6">
+    <div class="user-filter flex flex-col items-start justify-between
+        grow-0 md:justify-start gap-4">
         <filter-component
             id="countries"
             name="country"
@@ -25,5 +26,5 @@ const store = useFilterStore();
             :callback="store.selectScore"
             no-value-text="Choose score range">
         </filter-component>
-    </section>
+    </div>
 </template>

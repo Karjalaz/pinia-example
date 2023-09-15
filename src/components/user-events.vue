@@ -148,7 +148,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="events flex flex-col h-1/2 justify-start">
+    <div class="events flex flex-col overflow-y-scroll">
         <h3 class="events__title font-medium">
             List
         </h3>
@@ -160,8 +160,7 @@ onMounted(() => {
                 <p class="animate-bounce text-primary text-lg">...</p>
             </div>
             <ul v-else
-                class="events__list flex flex-col overflow-y-scroll h-full mx-1"
-                :class="{'items-center': emptyList}">
+                class="events__list flex flex-col mx-1 h-full">
                 <li 
                     class="event__item"
                     v-for="user in filteredUsers.items"
@@ -169,12 +168,15 @@ onMounted(() => {
                     <user-item :user="user"></user-item>
                 </li>
                 <div v-if="emptyList"
-                    class="flex items-center justify-center self-center h-full">
-                    No users found
+                    class="flex items-center justify-center items-center h-full"
+                    :class="{'justify-center items-center': emptyList}">
+                    <h3 class="text-primary">
+                        No users found
+                    </h3>
                 </div>
             </ul>
         </transition>
-    </section>
+    </div>
 </template>
 
 <style scoped>

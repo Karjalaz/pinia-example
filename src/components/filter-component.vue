@@ -42,7 +42,7 @@ function selectOption(option) {
                     &#9747;
                 </span>
                 <span 
-                    class="ms-2 text-lg cursor-pointer"
+                    class="ms-4 text-xl cursor-pointer"
                     v-html="arrow"
                     @click="optionsVisible = !optionsVisible">
                 </span>

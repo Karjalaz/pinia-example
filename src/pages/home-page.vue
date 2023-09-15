@@ -5,10 +5,14 @@ import TheFooter from './../components/the-footer.vue'
 </script>
 
 <template>
-    <div class="page grid grid-cols-2 h-full text-primary">
-        <user-filter></user-filter>
-        <user-events></user-events>
-        <the-footer class="col-span-2 mt-auto"></the-footer>
+    <div class="page flex flex-col h-full text-primary">
+        <section class="content flex items-stretch flex-col gap-6
+            md:flex-row overflow-hidden">
+            <user-filter class="col-span-2 md:col-span-1 
+                md:px-2 md:w-2/3 lg:w-1/2 xl:w-1/3"></user-filter>
+            <user-events class="col-span-2 md:col-span-1 md:mt-0 md:w-2/3"></user-events>
+        </section>
+        <the-footer class="w-full mt-auto"></the-footer>
     </div>
 </template>
 
